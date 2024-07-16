@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select   # 使用 Select 對應下拉選單
+from selenium.webdriver.support.select import Select  
 import time
 
 def web_crawler():
@@ -13,7 +13,7 @@ def web_crawler():
     licenseType.select_by_index(1) 
 
     date = driver.find_element(By.ID, 'expectExamDateStr')
-    date.send_keys('date')  #Ex: 113年8月15日, input'1130815'
+    date.send_keys('date')  #Ex: 要預約113年8月15日, input'1130815'  
 
     place1 = Select(driver.find_element(By.ID, 'dmvNoLv1'))
     place1.select_by_index('index')  #index:{1~7} represents {臺北市區監理所（含金門馬祖）,臺北區監理所（北宜花）,新竹區監理所（桃竹苗）,臺中區監理所（中彰投）,嘉義區監理所（雲嘉南）,高雄市區監理所,高雄區監理所（高屏澎東）} respectively.
@@ -34,7 +34,7 @@ def web_crawler():
     button2.click()
 
     time.sleep(0.5)
-    button3 = driver.find_element(By.XPATH, '//*[@id="trnTable"]/tbody/tr[3]/td[4]/a')
+    button3 = driver.find_element(By.XPATH, '//*[@id="trnTable"]/tbody/tr[1]/td[4]/a')  #tr[] 括號裡的數字1是上午場, 2是下午場.
     button3.click()
 
     time.sleep(0.5)
@@ -50,7 +50,7 @@ def web_crawler():
     time.sleep(0.1)
 
     birth = driver.find_element(By.ID, 'birthdayStr')
-    birth.send_keys('ur_birth') #Ex:95年1月1日, input:0950101
+    birth.send_keys('ur_birth') #Ex:生日為95年1月1日, input:0950101
 
     time.sleep(0.1)
 
@@ -65,7 +65,7 @@ def web_crawler():
     time.sleep(0.1)
 
     email = driver.find_element(By.ID, 'email')
-    email.send_keys('ur_eamil')  #input
+    email.send_keys('ur_email')  #input
 
     time.sleep(0.1)
 
